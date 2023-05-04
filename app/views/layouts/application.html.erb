@@ -82,11 +82,17 @@
 
 <body>
   <header class="header">
-    <p class="header_pageTitle">Boards</p>
+    <%= link_to 'Boards', boards_path, data: { method: 'get' }, class: "header_pageTitle" %>
+    <%# <p class="header_pageTitle">
+    Boards
+    </p> %>
     <%if user_signed_in? %>
     <div class="dropdown" id="toggle2">
       <%= image_tag 'login_avatar.svg', class: 'header_avatar_dropbtn'%>
       <ul class="header-toggle-list mini">
+        <li class="header-toggle-subtitle">
+          <%= link_to 'プロフィール', profile_path %>
+        </li>
         <li class="header-toggle-subtitle">
           <%= link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' } %>
         </li>
@@ -95,6 +101,9 @@
     <% else %>
     <div class="login">
       <%= link_to 'ログイン', new_user_session_path, class: 'header_loginBtn' %>
+    </div>
+    <div class="register">
+      <%= link_to '会員登録', new_user_registration_path, class: 'header_loginBtn' %>
     </div>
     <% end %>
   </header>

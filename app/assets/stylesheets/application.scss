@@ -16,11 +16,11 @@
 
 @import 'header';
 @import 'variables';
-// @import 'board';
-// @import 'form';
-// @import 'common';
-// @import 'card';
-
+@import 'board';
+@import 'form';
+@import 'common';
+@import 'card';
+@import 'profile';
 
 html {
   word-spacing: 1px;

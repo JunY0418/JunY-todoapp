@@ -1,0 +1,41 @@
+<div class="container profilePage">
+  <h2 class="profilePage_title">プロフィール</h2>
+  <div class="profilePage_user">
+    <div class="profilePage_user_image">
+      <%= image_tag 'login_avatar.svg' %>
+    </div>
+    <div class="profilePage_user_basicInfo">
+      <div class="profilePage_user_name">
+        <div class="profilePage_user_displayName">
+          <%= "#{current_user.display_name}   (所属:#{current_user.profile&.division})" %>
+          <%# <%= current_user.display_name %>
+        </div>
+        <div class="profilePage_user_actionButton">
+          <%= link_to 'Edit', edit_profile_path %>
+        </div>
+      </div>
+      <div class="profilePage_user_introduction">
+        <%= current_user.profile&.description %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% current_user.boards.each do |boards| %>
+<%= link_to board_path(boards) do %>
+<div class="card">
+  <div class="card_content">
+    <div class="board_title">
+      <%= boards.title %>
+    </div>
+    <div class="board_content">
+      <%= truncate(boards.content, length:30) %>
+    </div>
+  </div>
+  <div class="card_details">
+    <%=image_tag 'Oval.svg'%>
+    <%# <%= image_tag article.user.avatar_image %>
+  </div>
+</div>
+<% end %>
+<% end %>
