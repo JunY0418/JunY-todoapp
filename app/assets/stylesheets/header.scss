@@ -14,22 +14,9 @@ $back-icon-size: 16px;
   border-bottom:solid
   #a8a8a8 1px;
 
-  a {
-
-    &_pageTitle {
-      position: absolute;
-      width: 56px;
-      height: 25px;
-      left: 30px;
-      top: 17px;
-
-      font-family: 'Avenir';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 25px;
-      /* identical to box height */
-      color: #000000;
+  &_pageTitle {
+    padding-left: 10px;
+    color: #616161;
     }
   }
 
@@ -52,4 +39,3 @@ $back-icon-size: 16px;
     margin: 0 0 0 auto;
     padding: 0px 5px;
   }
-}

@@ -39,3 +39,13 @@
 </div>
 <% end %>
 <% end %>
+
+<div class="container">
+  <%= link_to new_board_path do %>
+    <div class="board_addNew">
+      <div class="board_addNew_link">
+        <%= link_to '＋ Add new board', new_board_path(@board), class: 'board_addNew_text'%>
+      </div>
+    </div>
+  <% end %>
+</div>
