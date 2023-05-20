@@ -2,6 +2,8 @@ input, select {
   margin-top: 5px;
 
   &.text {
+    margin-top: 10px;
+    margin-bottom: 20px;
     width: 100%;
     padding: 16px 24px;
     border: 1px solid #EBEBEB;
@@ -11,6 +13,13 @@ input, select {
 }
 
 label {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 36px;
+  margin: 20px 0px 25px;
+
   font-size: 12px;
   margin-bottom: 20px;
   font-family: 'Avenir';
@@ -18,8 +27,6 @@ label {
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
-/* identical to box height */
-color: #000000;
 }
 
 .field {
@@ -36,7 +43,7 @@ textarea {
   border: 1px solid #EBEBEB;
 }
 
-.form_Title {
+.session_title {
   font-family: 'Avenir';
   font-style: normal;
   font-weight: 800;
@@ -56,6 +63,10 @@ textarea {
 }
 
 .btn-primary {
+  display:block;
+  margin:0 auto;
+  margin-top: 20px;
+
   width: 90%;
   height: 40px;
 
@@ -70,3 +81,5 @@ textarea {
   /* identical to box height */
   color: #FFFFFF;
 }
+
+

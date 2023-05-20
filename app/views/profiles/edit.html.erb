@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="session_Title">Profile</h2>
+  <ul>
+    <% @profile.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    <%= form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f| %>
+    <div>
+      <%= f.label :name, '氏名', class:'text' %>
+    </div>
+    <div>
+      <%= f.text_field :name, class:'text' %>
+    </div>
+
+    <div>
+      <%= f.label :division, '部署', class:'text' %>
+    </div>
+    <div>
+      <%= f.text_field :division, class:'text' %>
+    </div>
+
+    <div>
+      <%= f.label :description, '自己紹介', class:'text'%>
+    </div>
+
+    <div>
+      <%= f.text_area :description %>
+      <%= f.submit :'Submit', class: 'btn-primary' %>
+    </div>
+
+    <% end %>
+  </ul>
+</div>
