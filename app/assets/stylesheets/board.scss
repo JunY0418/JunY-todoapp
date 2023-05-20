@@ -1,0 +1,194 @@
+@import 'variables';
+$heart-size: 32px;
+$avatar-size: 32px;
+$container-padding: 16px;
+
+.session_Title {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 36px;
+  margin: 10px 20px 20px 8px;
+  /* identical to box height */
+  color: #000000;
+}
+
+.description {
+  position: absolute;
+  height: 10px;
+  left: 20px;
+  top: 30px;
+
+  background: #F4F4F4;
+  border-radius: 10px;
+}
+
+
+///////* 新しいボード */////////
+.board_addNew {
+  // position: fixed;
+  // width: 362px;
+  // height: 161px;
+
+  // left: 30px;
+  // bottom: 16px;
+  // right: 16px;
+
+  // background: #FFFFFF;
+  // border: 1px dashed rgba(0, 0, 0, 0.2);
+  // border-radius: 10px;
+  // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+  position: relative;
+  height: 180px;
+  left: 0px;
+  top: 0px;
+
+  padding-bottom: 30px;
+
+  background: #FFFFFF;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  margin: 16px 16px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+  &_text {
+    font-family: cursive !important;
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 18px;
+    line-height: 25px;
+    /* identical to box height */
+    color: #000000;
+    }
+
+  &_link {
+    position: absolute;
+    height: 25px;
+    left: 0.35%;
+    right: 0.35%;
+    top: calc(50% - 25px/2);
+    text-align: center;
+  }
+}
+
+.board_title {
+  position: absolute;
+  height: 10px;
+  top: 30px;
+
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.board_detail {
+  padding-top: 10px;
+  display: flex;
+  font-size: 12px;
+  position: relative;
+}
+
+
+/////* ボード */////////
+.board {
+  background-color: white;
+  margin: 16px 16px;
+  padding: $container-padding $container-padding;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  position: relative;
+  border-radius: 10px;
+  height: auto;
+  left: 0px;
+  top: 0px;
+
+  &_image {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    margin: $container-padding * -1 $container-padding * -1 16px;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+  }
+
+
+  h2 {
+    font-size: 16px;
+  }
+
+  &_title {
+    font-size: 22px;
+  }
+
+  &_comment {
+    padding: 12px 0;
+  }
+
+  &_detail {
+    padding-top: 10px;
+    display: none;
+    font-size: 12px;
+    position: relative;
+    img {
+      cursor: pointer;
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 100%;
+      margin-right: 16px;
+    }
+    img.dropbtn {
+      margin-right: 0px;
+    }
+
+    &_actions {
+    right: 0px;
+    position: absolute;
+    }
+  }
+  &_content {
+    padding: 24px 0 32px;
+  }
+  &_heart {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    img {
+      width: $heart-size;
+      height: $heart-size;
+    }
+  }
+}
+
+// .board {
+// background-color: white;
+//     margin: 16px 16px;
+//     padding: 16px 16px;
+//     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+//     position: relative;
+//     border-radius: 10px;
+// }
+
+// .board_detail {
+// padding-top: 10px;
+// display: flex;
+// font-size: 12px;
+// position: relative;
+// }
+
+// .board_content {
+//   padding: 24px 0 32px;
+// }

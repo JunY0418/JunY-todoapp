@@ -1,18 +1,114 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ToDoApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta content="width=device-width,initial-scale=1" name="viewport"/>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
-    <header class="header">
-      <p class="header_pageTitle">Boards</p>
-    </header>
-    <%= yield %>
-  </body>
+<head>
+  <title>ToDoApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- jQueryのライブラリー本体を読み込む -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <!-- 必ずjQuery本体を読み込んだ後にjQueryで書いたファイルを読み込む-->
+  <script src="js/practice.js"></script>
+
+  <!-------------- ナビのトグル ------------------>
+  <!--- リストがホバーすると浮き出る --->
+  <script>
+    $(document).ready(function () {
+    // #toggleの要素にマウスを乗せた時の処理
+    $('#toggle').hover(function () {
+      // .header-toggle-listの要素を表示し、アニメーションを追加
+      $('.toggle-list').stop().animate({
+        top: '30px',
+        right: '0px',
+        opacity: '1'
+      }, 200);
+    }, function () {
+      // .header-toggle-listの要素を非表示し、アニメーションを追加
+      $('.toggle-list').stop().animate({
+        top: '0px',
+        opacity: '0'
+      }, 200);
+    });
+
+    // #toggle2の要素にマウスを乗せた時の処理
+    $('#toggle2').hover(function () {
+      // .toggle-listの要素を表示し、アニメーションを追加
+      $('.header-toggle-list').stop().animate({
+        top: '50px',
+        right: '0px',
+        opacity: '1'
+      }, 200);
+    }, function () {
+      // .toggle-listの要素を非表示し、アニメーションを追加
+      $('.header-toggle-list').stop().animate({
+        top: '0px',
+        opacity: '0'
+      }, 200);
+    });
+  });
+    // $(document).ready(function () {
+    //   // #toggleの要素にマウスを乗せた時の処理
+    //   $('#toggle, #toggle2').hover(function () {
+    //     // .toggle-listの要素を表示し、アニメーションを追加
+    //     $('.toggle-list').stop().animate({
+    //       top: '30px',
+    //       right: '0px',
+    //       opacity: '1'
+    //     }, 200);
+    //     $('.header-toggle-list').stop().animate({
+    //       top: '50px',
+    //       right: '0px',
+    //       opacity: '1'
+    //     }, 200);
+    //   }, function () {
+    //     // .toggle-listの要素を非表示し、アニメーションを追加
+    //     $('.toggle-list').stop().animate({
+    //       top: '0px',
+    //       opacity: '0'
+    //     }, 200);
+    //     $('.header-toggle-list').stop().animate({
+    //       top: '0px',
+    //       opacity: '0'
+    //     }, 200);
+    //   });
+    // });
+  </script>
+
+</head>
+
+<body>
+  <header class="header">
+    <%= link_to 'Boards', boards_path, data: { method: 'get' }, class: "header_pageTitle" %>
+    <%# <p class="header_pageTitle">
+    Boards
+    </p> %>
+    <%if user_signed_in? %>
+    <div class="dropdown" id="toggle2">
+      <%= image_tag 'login_avatar.svg', class: 'header_avatar_dropbtn'%>
+      <ul class="header-toggle-list mini">
+        <li class="header-toggle-subtitle">
+          <%= link_to 'プロフィール', profile_path %>
+        </li>
+        <li class="header-toggle-subtitle">
+          <%= link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' } %>
+        </li>
+      </ul>
+    </div>
+    <% else %>
+    <div class="login">
+      <%= link_to 'ログイン', new_user_session_path, class: 'header_loginBtn' %>
+    </div>
+    <div class="register">
+      <%= link_to '会員登録', new_user_registration_path, class: 'header_loginBtn' %>
+    </div>
+    <% end %>
+  </header>
+
+  <%= yield %>
+</body>
+
 </html>

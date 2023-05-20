@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 class="session_Title">All Boards</h2>
+  <div class="container">
+    <% @boards.each do |board| %>
+    <%= render 'commons/board', board: board %>
+    <% end %>
+  </div>
+  <div class="container">
+      <%= link_to new_board_path do %>
+      <div class="board_addNew">
+        <div class="board_addNew_link">
+          <%= link_to '＋ Add new board', new_board_path(@board), class: 'board_addNew_text'%>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>

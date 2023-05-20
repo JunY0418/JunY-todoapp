@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="session_Title">New Board</h2>
+  <ul>
+    <% @board.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    <%= form_with(model: @board, local: true) do |f| %>
+      <div>
+        <%= f.label :title, 'Name', class:'text' %>
+      </div>
+      <div>
+        <%= f.text_field :title, class:'text' %>
+      </div>
+
+      <div>
+        <%= f.label :content, 'Description', class:'text'%>
+      </div>
+
+      <div>
+        <%= f.text_area :content %>
+        <%= f.submit :'Submit', class: 'btn-primary' %>
+      </div>
+    <% end %>
+  </ul>
+</div>

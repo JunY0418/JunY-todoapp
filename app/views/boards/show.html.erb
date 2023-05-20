@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="board">
+    <div class="board_content">
+      <div class="board_title">
+        <%= @board.title %>
+      </div>
+        <div class="board_detail_actions">
+        <% if user_signed_in? && current_user.has_written?(@board) %>
+          <div class="dropdown" id="toggle">
+            <%= image_tag 'actions.svg', class: 'dropbtn'%>
+            <ul class="toggle-list mini" >
+              <li class="toggle-subtitle"> <%= link_to 'Edit', edit_board_path(@board) %> </li>
+              <li class="toggle-subtitle"> <%= link_to 'Delete', board_path(@board), data: {method: 'delete' , confirm: '本当に削除してよろしいですか'} %> </li>
+            </ul>
+          </div>
+        <%end%>
+        </div>
+      <div class="board_content">
+        <%= @board.content %>
+      </div>
+    </div>
+    <div class="card_details">
+      <%=image_tag 'Oval.svg'%>
+      <%# <%= image_tag article.user.avatar_image %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <%= link_to new_board_path do %>
+    <div class="board_addNew">
+      <div class="board_addNew_link">
+        <%= link_to '＋ Add new board', new_board_path(@board), class: 'board_addNew_text'%>
+      </div>
+    </div>
+  <% end %>
+</div>
