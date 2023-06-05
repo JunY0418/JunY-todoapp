@@ -7,7 +7,10 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @boards = Board.all
+    @board = Board.find(params[:id])
+    @comment = Comment.new
+    @comments = @board.comments
+    # 他の必要なコード
   end
 
   def new
@@ -52,6 +55,8 @@ class BoardsController < ApplicationController
   end
 
   def set_board
+    puts "params[:id]: #{params[:id]}"
     @board = Board.find(params[:id])
+    puts "@board: #{@board.inspect}"
   end
 end

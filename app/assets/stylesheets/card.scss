@@ -1,4 +1,5 @@
-@import 'variables';
+@import './variables';
+$image_size: 56px;
 
 .card {
   position: relative;
@@ -12,12 +13,29 @@
   margin: 16px 16px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
 }
 
 .card_details {
   position: absolute;
   bottom: 10px;
   left: 10px;
+
+  &_user {
+    display: flex;
+
+    &_image {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      img {
+        width: $image_size;
+        height: $image_size;
+        border-radius: 30px;
+      }
+    }
+  }
 }
 
 .card_content {
@@ -36,8 +54,3 @@
   }
 }
 
-.card_details {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-}

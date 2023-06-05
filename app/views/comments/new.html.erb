@@ -1,0 +1,18 @@
+<div class="container">
+  <%# <h2 class="session_Title">コメント</h2> %>
+  <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    <%= form_with(model: @comment, url: board_comments_path(@comment.board), local: true) do |f| %>
+      <div>
+        <%= f.label :content, 'コメント', class:'text'%>
+      </div>
+
+      <div>
+        <%= f.text_area :content %>
+        <%= f.submit :'Submit', class: 'btn-primary' %>
+      </div>
+    <% end %>
+  </ul>
+</div>

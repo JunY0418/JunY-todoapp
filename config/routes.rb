@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   # get '/users/sign_out' => 'devise/sessions#destroy'
   root to: 'boards#index'
   # get '/new', to: 'boards#new'
-  resources :boards
+  resources :boards do
+    resources :comments, only: [:new, :edit, :update, :create, :destroy]
+  end
   resource :profile, only: [:show, :edit, :update]
   post '/profile/edit', to: 'profiles#update'
   # get '/profile/edit' => 'profiles#edit'

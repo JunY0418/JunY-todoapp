@@ -2,7 +2,11 @@
   <h2 class="profilePage_title">プロフィール</h2>
   <div class="profilePage_user">
     <div class="profilePage_user_image">
-      <%= image_tag 'login_avatar.svg' %>
+      <% if current_user.profile&.avatar&.attached? %>
+      <%= image_tag current_user.profile.avatar %>
+      <% else %>
+      <%= image_tag 'login_avatar.png' %>
+      <% end %>
     </div>
     <div class="profilePage_user_basicInfo">
       <div class="profilePage_user_name">
@@ -23,17 +27,26 @@
 
 <% current_user.boards.each do |boards| %>
 <%= link_to board_path(boards) do %>
-<div class="card">
-  <div class="card_content">
-    <div class="board_title">
-      <%= boards.title %>
+<div class="board">
+  <div class="board_content">
+    <% if boards.eyecatch.attached? %>
+    <div class="board_image">
+      <%= image_tag boards.eyecatch %>
     </div>
-    <div class="board_content">
+    <% end %>
+    <div class="board_title">
+      <%= truncate(boards.title, length:23) %>
+    </div>
+    <div class="board_paragraph">
       <%= truncate(boards.content, length:30) %>
     </div>
   </div>
-  <div class="card_details">
-    <%=image_tag 'Oval.svg'%>
+  <div class="card_details_user_image">
+      <% if current_user.profile&.avatar&.attached? %>
+      <%= image_tag current_user.profile.avatar %>
+      <% else %>
+      <%= image_tag 'login_avatar.png' %>
+      <% end %>
     <%# <%= image_tag article.user.avatar_image %>
   </div>
 </div>

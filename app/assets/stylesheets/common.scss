@@ -1,12 +1,15 @@
 /* ドロップダウンの作成 */
 @import 'variables';
+
 $base-bg-color: #e2d1c1;
+
 
 
 .board_detail_actions {
   right: 0px;
-  top: 30px;
-  position: absolute;
+  top: -15px;
+  position: relative;
+  padding-bottom: 20px;
 }
 
 // .board_detail img.dropbtn {
@@ -15,13 +18,12 @@ $base-bg-color: #e2d1c1;
 
 
 .dropdown {
-  // position: relative;
-  // display: inline-block;
   position: absolute;
   right: 20px;
   top: 0px;
 
   img {
+    cursor: pointer;
     width: 25px;
     height: 25px;
   }
@@ -37,16 +39,17 @@ $base-bg-color: #e2d1c1;
   z-index: 5;
   position: absolute;
   padding: 0;
-  top: 50px;
-  display: block;
+  top: 30px;
+  right: 0px;
+  display: none;
   background: #fff;
-  opacity: 0;
   border-radius: 2px;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.301);
   transition: color .3s,background .3s,transform .3s,opacity .3s,border .3s,padding .3s,left .3s,bottom .3s,box-shadow .3s;
 
   &.mini {
     min-width: 100px;
+    right: 0px;
     // width: none;
   }
 
@@ -72,22 +75,37 @@ $base-bg-color: #e2d1c1;
 
 
 
+/////////////////////
+// ヘッダーのアバター //
+/////////////////////
+
 .header-toggle-list {
-  z-index: 5;
+  z-index: 1;
   position: absolute;
   padding: 0;
   top: 50px;
-  display: block;
+  display: none; /* 初期状態は非表示 */
   background: #fff;
-  opacity: 0;
   border-radius: 2px;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.301);
   transition: color .3s,background .3s,transform .3s,opacity .3s,border .3s,padding .3s,left .3s,bottom .3s,box-shadow .3s;
 
+  // z-index: 1;
+  // position: absolute;
+  // padding: 0;
+  // top: 50px;
+  // display: none;/*はじめは非表示*/
+  // background: #fff;
+  // border-radius: 2px;
+  // box-shadow: 0 0 14px rgba(0, 0, 0, 0.301);
+  // transition: color .3s,background .3s,transform .3s,opacity .3s,border .3s,padding .3s,left .3s,bottom .3s,box-shadow .3s;
+
   &.mini {
     min-width: 100px;
+    right: 0px;
     // width: none;
   }
+
   .header-toggle-subtitle {
     position: relative;
     // text-align: center;
@@ -110,43 +128,47 @@ $base-bg-color: #e2d1c1;
   }
 }
 
-// .dropdown-content {
+.header_details_user_image img {
+  cursor: pointer;
+  z-index: 2;
+}
+
+// .header-toggle-list {
 //   z-index: 5;
 //   position: absolute;
 //   padding: 0;
-//   top: 30px;
+//   top: 50px;
 //   display: block;
 //   background: #fff;
 //   opacity: 0;
 //   border-radius: 2px;
-//   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+//   box-shadow: 0 0 14px rgba(0, 0, 0, 0.301);
 //   transition: color .3s,background .3s,transform .3s,opacity .3s,border .3s,padding .3s,left .3s,bottom .3s,box-shadow .3s;
-// }
-// //   font-weight: normal;
-// //   display: none;
-// //   position: relative;
-// //   left: 0px;
-// //   background-color: white;
-// //   min-width: 160px;
-// //   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-// //   z-index: 1;
 
-// //   &.mini {
-// //     min-width: 100px;
-// //   }
-// // }
+//   &.mini {
+//     min-width: 100px;
+//     right: 0px;
+//     // width: none;
+//   }
 
-// .dropdown-content a {
-//   padding: 16px 8px;
-//   text-decoration: none;
-//   display: block;
-//   color: $text-base-color;
-// }
+//   .header-toggle-subtitle {
+//     position: relative;
+//     // text-align: center;
+//     display: block;
+//     line-height: 0.7rem;
 
-// .dropdown-content a:hover {
-//   background-color: white;
-// }
-
-// .dropdown:hover .dropdown-content {
-//   display: block;
+//     a {
+//       padding: 10px 6px 10px 6px;
+//       text-align: center;
+//       top: 30px;
+//       display: block;
+//       background-color: #ffefe0;
+//       font-size: 0.9rem;
+//       font-weight: 400;
+//       border-radius: 2px;
+//       height: auto;
+//       width: 100%;
+//       transition: color .3s,background .3s,transform .3s,opacity .3s,border .3s,padding .3s,left .3s,bottom .3s,box-shadow .3s;
+//     }
+//   }
 // }

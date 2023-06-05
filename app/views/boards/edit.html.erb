@@ -6,6 +6,13 @@
     <% end %>
     <%= form_with(model: @board, local: true) do |f| %>
       <div>
+        <%= f.label :eyecatch, 'アイキャッチ', class:'text' %>
+      </div>
+      <div>
+        <%= f.file_field :eyecatch, class:'eyecatch' %>
+      </div>
+
+      <div>
         <%= f.label :title, 'Name', class:'text' %>
       </div>
       <div>

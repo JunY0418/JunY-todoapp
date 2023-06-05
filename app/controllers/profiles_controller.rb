@@ -32,7 +32,8 @@ class ProfilesController < ApplicationController
       :name,
       :division,
       :description,
-      :subscribed
+      :subscribed,
+      :avatar
     )
   end
 end

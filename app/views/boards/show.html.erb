@@ -1,37 +1,89 @@
 <div class="container">
-  <div class="board">
+
+  <div class="board_titlePage">
+    <%= @board.title %>
+  </div>
+
+  <div class="board_detail_actions">
+    <% if user_signed_in? && current_user.has_written?(@board) %>
+    <div class="dropdown" id="toggle">
+      <%= image_tag 'actions.svg', class: 'dropbtn'%>
+      <ul class="toggle-list mini">
+        <li class="toggle-subtitle"> <%= link_to 'Edit', edit_board_path(@board) %> </li>
+        <li class="toggle-subtitle">
+          <%= link_to 'Delete', board_path(@board), data: {method: 'delete' , confirm: '本当に削除してよろしいですか'} %> </li>
+      </ul>
+    </div>
+    <%end%>
+  </div>
+
+  <% if @board.eyecatch.attached? %>
+  <div class="board_content_eyecatch">
+    <div class="board_image">
+      <%= image_tag @board.eyecatch %>
+    </div>
+  </div>
+  <% end %>
+
+
+  <div class="board_show">
     <div class="board_content">
-      <div class="board_title">
-        <%= @board.title %>
-      </div>
-        <div class="board_detail_actions">
-        <% if user_signed_in? && current_user.has_written?(@board) %>
-          <div class="dropdown" id="toggle">
-            <%= image_tag 'actions.svg', class: 'dropbtn'%>
-            <ul class="toggle-list mini" >
-              <li class="toggle-subtitle"> <%= link_to 'Edit', edit_board_path(@board) %> </li>
-              <li class="toggle-subtitle"> <%= link_to 'Delete', board_path(@board), data: {method: 'delete' , confirm: '本当に削除してよろしいですか'} %> </li>
-            </ul>
-          </div>
-        <%end%>
-        </div>
-      <div class="board_content">
+      <div class="paragraph">
         <%= @board.content %>
       </div>
     </div>
-    <div class="card_details">
-      <%=image_tag 'Oval.svg'%>
-      <%# <%= image_tag article.user.avatar_image %>
+    <div class="card_details_user_image">
+      <% if  @board.user.present? && @board.user.profile&.avatar&.attached? %>
+      <%= image_tag  @board.user.profile.avatar %>
+      <% else %>
+      <%= image_tag 'login_avatar.png' %>
+      <% end %>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <%= link_to new_board_path do %>
-    <div class="board_addNew">
-      <div class="board_addNew_link">
-        <%= link_to '＋ Add new board', new_board_path(@board), class: 'board_addNew_text'%>
+  <h2 class="comment_title">Comment</h2>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <div class="comment_details">
+        <div class="comment_details_user_image">
+          <% if comment.user.present? && comment.user.profile&.avatar&.attached? %>
+            <%= image_tag comment.user.profile.avatar %>
+          <% else %>
+            <%= image_tag 'login_avatar.png' %>
+          <% end %>
+        </div>
+          <% if comment.user == current_user %>
+            <div class="link_to">
+              <%= link_to "delete", board_comment_path(@board, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+            <div class="link_to">
+              <%= link_to "edit", edit_board_comment_path(@board, comment) %>
+            </div>
+          <% elsif @board && current_user && current_user.id == @board.user_id %>
+            <div class="link_to">
+              <%= link_to "delete", board_comment_path(@board, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          <% end %>
+      </div>
+      <div class="board_paragraph">
+        <%= comment.content %>
       </div>
     </div>
   <% end %>
+</div>
+
+
+<%= link_to new_board_comment_path(@board) do %>
+<div class="comment_addNew">
+  <div class="comment_addNew_link">
+    <%= link_to '＋ Add Comment', new_board_comment_path(@board), class: 'board_addNew_text'%>
+  </div>
+</div>
+<% end %>
+
+<div class="container">
+<div class="container">
+</div>
 </div>

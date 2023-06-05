@@ -1,16 +1,25 @@
 <%= link_to board_path(board) do %>
-  <div class="card">
-    <div class="card_content">
-      <div class="board_title">
-        <%= board.title %>
-      </div>
-      <div class="board_content">
+<div class="board">
+  <div class="board_content">
+    <% if board.eyecatch.attached? %>
+    <div class="board_image">
+      <%= image_tag board.eyecatch %>
+    </div>
+    <% end %>
+    <div class="board_title">
+      <%= truncate(board.title, length:23) %>
+    </div>
+      <div class="board_paragraph">
         <%= truncate(board.content, length:30) %>
       </div>
-    </div>
-    <div class="card_details">
-      <%=image_tag 'Oval.svg'%>
-      <%# <%= image_tag article.user.avatar_image %>
-    </div>
   </div>
+  <div class="card_details_user_image">
+    <% if board.user.present? && board.user.profile&.avatar&.attached? %>
+    <%= image_tag board.user.profile.avatar %>
+    <% else %>
+    <%= image_tag 'login_avatar.png' %>
+    <% end %>
+    <%# <%= image_tag article.user.avatar_image %>
+  </div>
+</div>
 <% end %>
