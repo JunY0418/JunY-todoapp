@@ -55,6 +55,8 @@ class BoardsController < ApplicationController
   end
 
   def set_board
+    puts "params[:id]: #{params[:id]}"
     @board = Board.find(params[:id])
+    puts "@board: #{@board.inspect}"
   end
 end

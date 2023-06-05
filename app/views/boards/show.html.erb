@@ -45,36 +45,32 @@
 <div class="container">
   <h2 class="comment_title">Comment</h2>
   <% @comments.each do |comment| %>
-  <div class="comment">
-    <div class="comment_details">
-      <div class="comment_details_user_image">
-        <% if comment.user.present? && comment.user.profile&.avatar&.attached? %>
-        <%= image_tag comment.user.profile.avatar %>
-        <% else %>
-        <%= image_tag 'login_avatar.png' %>
-        <% end %>
+    <div class="comment">
+      <div class="comment_details">
+        <div class="comment_details_user_image">
+          <% if comment.user.present? && comment.user.profile&.avatar&.attached? %>
+            <%= image_tag comment.user.profile.avatar %>
+          <% else %>
+            <%= image_tag 'login_avatar.png' %>
+          <% end %>
+        </div>
+          <% if comment.user == current_user %>
+            <div class="link_to">
+              <%= link_to "delete", board_comment_path(@board, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+            <div class="link_to">
+              <%= link_to "edit", edit_board_comment_path(@board, comment) %>
+            </div>
+          <% elsif @board && current_user && current_user.id == @board.user_id %>
+            <div class="link_to">
+              <%= link_to "delete", board_comment_path(@board, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          <% end %>
       </div>
-      <%# comment delete or edit %>
-      <% if comment.user == current_user %>
-      <div class="link_to">
-        <%= link_to "delete", board_comment_path(@board, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-        <!--comment => comment_path-->
+      <div class="board_paragraph">
+        <%= comment.content %>
       </div>
-      <div class="link_to">
-        <%= link_to "edit", edit_board_comment_path(@board, comment) %>
-      </div>
-      <%# login user が投稿者だった場合、削除のみ可能 %>
-      <% elsif current_user.id == @board.user_id %>
-      <div class="link_to">
-        <%= link_to "delete", board_comment_path(@board, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-        <!--comment => comment_path-->
-      </div>
-      <% end %>
     </div>
-    <div class="board_paragraph">
-      <%= comment.content %>
-    </div>
-  </div>
   <% end %>
 </div>
 
