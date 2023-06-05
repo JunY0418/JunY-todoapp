@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2023_05_16_065010) do
     t.boolean "subscribed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "division"
     t.text "description"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
