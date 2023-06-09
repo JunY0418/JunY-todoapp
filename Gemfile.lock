@@ -260,6 +260,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bootsnap (>= 1.4.2)
+  bundler (= 2.1.4)
   byebug
   capybara (>= 2.15)
   devise
@@ -282,7 +283,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
-    ruby 2.7.8p225
+   ruby 2.7.8p225
 
 BUNDLED WITH
-    2.1.4
+   2.1.4
