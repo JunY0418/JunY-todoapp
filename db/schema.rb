@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 2023_06_13_113632) do
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
+    t.string "division"
+    t.text "description"
     t.boolean "subscribed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "division"
-    t.text "description"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
